@@ -1,34 +1,20 @@
 ## Overview
-This repository hosts a personal blog project built using modern web development technologies. The blog is designed to showcase personal content, articles, and portfolio items in an engaging and responsive format.
+This repository hosts a personal blog project built using modern web development technologies. The blog is designed to showcase content in an engaging and responsive format.
 
 ---
 
 ## Table of Contents
 1. [Project Goals](#project-goals)
-2. [Technology Stack](#technology-stack)
-3. [Installation and Setup](#installation-and-setup)
-4. [Project Architecture](#project-architecture)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
+2. [Installation and Setup](#installation-and-setup)
+3. [Project Architecture](#project-architecture)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
 
 ---
 
 ## Project Goals
-The primary objectives of this blog project are:
-- To provide a platform for sharing personal and professional content.
-- To serve as a portfolio showcasing web development skills.
-- To explore and experiment with modern technologies like TypeScript.
-- To maintain a responsive, performant, and visually appealing design.
-
----
-
-## Technology Stack
-This project is primarily built using the following technologies:
-- **TypeScript**: Main programming language for scalability and reliability (96.8% of the codebase).
-- **JavaScript**: For additional functionality where needed (1.7% of the codebase).
-- **CSS**: For styling and layout (1.5% of the codebase).
-- Additional libraries and frameworks likely include React or similar modern frontend technologies.
+My primary goal for this project is to have a space where I can document ideas and memorable moments from my career.
 
 ---
 
