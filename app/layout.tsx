@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
+import { Footer } from "@/components/Footer"
 import "./globals.css"
 import type React from "react" // Added import for React
 
@@ -25,7 +26,8 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="max-w-3xl mx-auto px-4">
             <Header />
-            <main>{children}</main>
+              <main>{children}</main>
+              <Footer />
           </div>
         </ThemeProvider>
       </body>

@@ -2,6 +2,7 @@
 import { PostList } from "@/components/post-list"
 import type { Post } from "@/lib/types"
 import { useEffect, useState } from "react"
+import { IntroBanner } from "@/components/IntroBanner"
 
 async function getPosts(): Promise<Post[]> {
   try {
@@ -23,5 +24,10 @@ export default function Home() {
     getPosts().then(setPosts)
   }, [])
 
-  return <PostList posts={posts} />
+  return (
+    <>
+      <IntroBanner />
+      <PostList posts={posts} />
+    </>
+  )
 }
