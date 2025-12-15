@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server"
 import { getCollection } from "@/lib/mongodb"
 
+// Prevent Next.js from prerendering this route at build time.
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const col = await getCollection("Posts", "Post")
   const docs = await col.find().sort({ created_at: -1 }).toArray()
