@@ -1,5 +1,5 @@
 import Link from "next/link"
-import type { Post } from "@/lib/supabase"
+import type { Post } from "@/lib/types"
 
 function formatNumber(num: number): string {
   return new Intl.NumberFormat().format(num)
@@ -11,7 +11,7 @@ function formatDate(date: string): string {
 
 export function PostList({ posts }: { posts: Post[] }) {
   return (
-    <div className="mt-10 space-y-4">
+    <div className="mt-10 space-y-4 mx-auto p-3">
       <div className="grid grid-cols-12 text-sm text-gray-500 dark:text-gray-400 mb-8">
         <div className="col-span-2">Date</div>
         <div className="col-span-8">Title</div>

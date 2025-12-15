@@ -17,8 +17,8 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
       prose-headings:text-zinc-200 
       prose-headings:font-bold
       prose-headings:border-zinc-800 
-      prose-headings:pt-10 
-      prose-headings:pb-2
+      prose-headings:pt-5 
+      prose-headings:pb-1
       prose-h1:text-4xl 
       prose-h1:mb-6 
       prose-h2:text-xl 
@@ -88,6 +88,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
           ol: ({ node, className, ...props }) => (
             <ol className={`space-y-2 ${className}`} {...props} />
           ),
+          // h2: ({ node, className, ...props }) => (
+          //   <h2 style={{ fontFamily: 'Space, "Courier New", monospace' }} className={`space-y-1 ${className}`} {...props} />
+          // ),
           code: ({ node, className, children, ...props }) => {
             return (
               <code 

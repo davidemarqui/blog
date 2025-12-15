@@ -5,28 +5,29 @@ import Link from "next/link"
 import { useTheme } from "./theme-provider"
 
 export function Header() {
-  const { toggleTheme } = useTheme()
+  // const { toggleTheme } = useTheme()
 
   return (
-    <header className="flex items-center justify-between py-6">
-      <Link href="/" className="text-xl font-bold">
-        Davi Demarqui
+    <header className="flex items-center justify-between py-6 border-b border-zinc-400">
+      <Link
+        href="/"
+        className="text-xl font-bold"
+        style={{ fontFamily: 'Space, "Courier New", monospace' }}
+      >
+        DDB
       </Link>
       <nav className="flex text-sm font-mono items-center gap-6">
-        <Link href="/about" className="hover:text-gray-600 dark:hover:text-red-400">
+        {/* <Link href="/about" className="hover:text-gray-600 dark:hover:text-[#ef4444]">
           About
-        </Link>
+        </Link> */}
         <a
-          href="https://x.com/DavidDemarqui"
+          href="https://x.com/davedemc"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-gray-600 dark:hover:text-red-400"
+          className="border border-white py-1 px-2 hover:bg-white hover:text-black"
         >
           Follow me
         </a>
-        <button onClick={toggleTheme} className="p-2 hover:text-gray-700 dark:hover:text-red-400 rounded-full">
-          <Sun className="h-5 w-5" />
-        </button>
       </nav>
     </header>
   )
