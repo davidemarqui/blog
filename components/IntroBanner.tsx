@@ -16,7 +16,7 @@ export function IntroBanner() {
 
 
                 <p className="my-6">
-                    interest : robotics, ml, theology, music, cars, surf, theater, horror, books, hiking, experiencing, learning...
+                    interest : robotics, ml, theology, music, cars, ski, cinema, books, hiking, experiencing, learning...
                 </p>
 
                 <p className="mb-4">
