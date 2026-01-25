@@ -5,4 +5,5 @@ export type Post = {
   content: string
   views: number
   created_at: string
+  cover_image?: string
 }

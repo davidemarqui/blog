@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
-import { getCollection } from "@/lib/mongodb";
+import clientPromise from "@/lib/mongodb";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
+import { PostCard } from "@/components/PostCard";
 
 // Types for our post data
 type Post = {
@@ -12,26 +13,29 @@ type Post = {
   views: number;
   created_at: string;
   slug: string;
+  cover_image?: string;
 };
 
 export function formatDate(dateString: string): string {
   const date = new Date(dateString);
   const now = new Date();
-  
+
   // Format to "Month Day, Year"
   const formattedDate = date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-  
+
   // Calculate years since the date
   const yearsAgo = now.getFullYear() - date.getFullYear();
   return `${formattedDate} (${yearsAgo} ${yearsAgo === 1 ? "year" : "years"} ago)`;
 }
 
 async function getPost(slug: string): Promise<Post | null> {
-  const col = await getCollection("Posts", "Post")
+  const client = await clientPromise;
+  const db = client.db('Posts');
+  const col = db.collection('Post');
   const doc = await col.findOne({ slug })
   if (!doc) return null
 
@@ -49,12 +53,15 @@ async function getPost(slug: string): Promise<Post | null> {
     views: (doc.views ?? 0) + 1,
     created_at: doc.created_at instanceof Date ? doc.created_at.toISOString() : String(doc.created_at ?? ""),
     slug: doc.slug,
+    cover_image: doc.cover_image ?? "",
   }
 }
 
 // Fetch similar posts for the given slug. Tries tags, then title words, then recent posts.
 async function getSimilarPosts(slug: string, limit = 3): Promise<Post[]> {
-  const col = await getCollection("Posts", "Post")
+  const client = await clientPromise;
+  const db = client.db('Posts');
+  const col = db.collection('Post');
   const current = await col.findOne({ slug })
   if (!current) return []
 
@@ -66,6 +73,7 @@ async function getSimilarPosts(slug: string, limit = 3): Promise<Post[]> {
     views: doc.views ?? 0,
     created_at: doc.created_at instanceof Date ? doc.created_at.toISOString() : String(doc.created_at ?? ""),
     slug: doc.slug,
+    cover_image: doc.cover_image ?? "",
   })
 
   // Try matching tags
@@ -106,7 +114,7 @@ export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   const post = await getPost(params.slug);
-  
+
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -140,30 +148,44 @@ export default async function PostPage({
   const similar = await getSimilarPosts(params.slug);
 
   return (
-    <article className="prose prose-zinc dark:prose-invert max-w-none pt-5 pb-20">
-      <h1 className="text-2xl mb-0">{post.title}</h1>
-      <div className="my-5 grid grid-cols-2 w-full">
+    <article className="prose prose-zinc dark:prose-invert max-w-none py-5 border-b border-zinc-700">
+      <h1 className="text-2xl mb-0 px-5">{post.title}</h1>
+      <div className="my-2 grid grid-cols-2 w-full px-5">
         <span className="text-xs text-zinc-500">
-          @DaviDemarqui | {formatDate(post.created_at)}
+          {formatDate(post.created_at)}
         </span>
         <span className="text-xs text-zinc-500 text-right">
           {post.views.toLocaleString()} views
         </span>
       </div>
-      <MarkdownRenderer content={post.content} />
-      <section className="mt-12 border-t border-zinc-500">
-        <h2 className="text-lg mb-4">Similar posts</h2>
+      {post.cover_image ? (
+        <Image
+          src={post.cover_image}
+          alt={post.title}
+          width={1200}
+          height={600}
+          className="w-full h-auto my-4 border-y border-zinc-700"
+        />
+      ) : null}
+      <div className="px-5">
+        <MarkdownRenderer content={post.content} />
+      </div>
+      <section className="mt-5 px-5 border-t border-zinc-700">
+        <h2 className="text-lg my-4">Similar posts</h2>
         {similar.length > 0 ? (
-          <ul className="space-y-3">
-            {similar.map((p) => (
-              <li key={p.id}>
-                <Link href={`/posts/${p.slug}`} className="text-sm font-medium text-blue-600 hover:underline">
-                  {p.title}
-                </Link>
-                <div className="text-xs text-zinc-500">{formatDate(p.created_at)} • {p.views.toLocaleString()} views</div>
-              </li>
-            ))}
-          </ul>
+          <div className="overflow-x-auto overflow-y-hidden h-full">
+            <div className="flex gap-4">
+              {similar.map((p) => (
+                <PostCard
+                  key={p.id}
+                  post={p}
+                  formattedDate={formatDate(p.created_at)}
+                  formattedViews={`${p.views.toLocaleString()} views`}
+                  className="w-48"
+                />
+              ))}
+            </div>
+          </div>
         ) : (
           <p className="text-sm text-zinc-500">No similar posts found.</p>
         )}
