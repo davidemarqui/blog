@@ -23,7 +23,7 @@ export function IntroBanner() {
                 </p>
 
                 <ul className="list-disc list-inside space-y-2">
-                    <span className="font-bold text-white">PMy Links</span> :
+                    <span className="font-bold text-white">My Links</span> :
                     <ul className="ml-4 list-disc mt-2">
                         <li><Link href="https://www.instagram.com/davidemarqui/" target="_blank" className="hover:text-white underline">Insta</Link></li>
                         <li><Link href="https://x.com/davedemc" target="_blank" className="hover:text-white underline">𝕏 <span className="text-sm">(Twitter)</span></Link></li>
