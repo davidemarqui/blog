@@ -5,7 +5,7 @@ import "./globals.css"
 import type React from "react"
 
 export const metadata = {
-  title: "David — travel notes",
+  title: "David Notes",
   description:
     "Personal notes by David: fragments written on the road while traveling the world.",
 }
