@@ -1,35 +1,43 @@
 import Link from "next/link"
 
 export function IntroBanner() {
-    return (
-        <section className="bg-black text-[#828282] py-3 px-5">
-            <div className="w-full font-mono">
-                <h1 className="text-2xl text-white mb-2">上帝保佑你</h1>
+  return (
+    <section className="border-b border-hn-line bg-hn-bg/60 px-3 py-4 font-mono text-[12px] sm:text-[13px] leading-relaxed">
+      <h1 className="m-0 mb-2 text-base sm:text-lg font-normal text-hn-glow hack-glow tracking-tight">
+        Sup, I&apos;m David.
+      </h1>
 
-                <p className="mb-4 leading-relaxed">
-                    I travel, create cool companies with cool people, and work on various projects, including some you may be familiar with.<br />
-                    Here I share notes I have made throughout my life on my cell phone.
-                </p>
+      <p className="m-0 mb-3 text-hn-foreground/95 max-w-prose">
+        This is my public notes log: rough drafts, bits from the road when there&apos;s something
+        worth jotting down, and things I care about. Usually typed on my phone when traveling
+        between flights, or late nights. There&apos;s no publishing calendar here; long
+        quiet stretches are normal. Don&apos;t expect a magazine; think of it as a folder I left
+        open on a shared machine.
+      </p>
 
-                <Link href="https://open.spotify.com/user/31qzwpb6guuqza7kqtvpp2ir2eyi?si=d69bd63033bd4dfb" target="_blank" className="text-white underline"><span className="text-4xl">☣</span> Sum sick playlists <span className="text-4xl">☣</span></Link>
+      <p className="m-0 mb-3 text-hn-meta max-w-prose">
+        You might find half-baked ideas about companies I&apos;m building with friends, side
+        projects, books, music, or whatever stuck in my head that week.
+      </p>
 
-
-                <p className="my-5">
-                    <span className="font-bold text-white">Interests</span> : robotics, machine learning, theology, loud music, fast cars, cinema, books, learning...
-                </p>
-
-                <p className="my-5">
-                    <span className="font-bold text-white">Pure Hate</span>  : lazy people, woke culture, leftism, comunism, PHP and Microsoft
-                </p>
-
-                <ul className="list-disc list-inside space-y-2">
-                    <span className="font-bold text-white">My Links</span> :
-                    <ul className="ml-4 list-disc mt-2">
-                        <li><Link href="https://www.instagram.com/davidemarqui/" target="_blank" className="hover:text-white underline">Insta</Link></li>
-                        <li><Link href="https://x.com/davedemc" target="_blank" className="hover:text-white underline">𝕏 <span className="text-sm">(Twitter)</span></Link></li>
-                    </ul>
-                </ul>
-            </div>
-        </section>
-    )
+      <p className="m-0 text-hn-meta">
+        <span className="text-hn-glow">*</span> links:{" "}
+        <Link
+          href="https://open.spotify.com/user/31qzwpb6guuqza7kqtvpp2ir2eyi?si=d69bd63033bd4dfb"
+          target="_blank"
+          className="text-hn-foreground underline decoration-hn-line underline-offset-2 hover:text-hn-glow hover:decoration-hn-glow"
+        >
+          sick playlists
+        </Link>
+        <span className="mx-1.5 text-hn-line">·</span>
+        <Link
+          href="https://x.com/davedemc"
+          target="_blank"
+          className="text-hn-foreground underline decoration-hn-line underline-offset-2 hover:text-hn-glow hover:decoration-hn-glow"
+        >
+          x / twitter
+        </Link>
+      </p>
+    </section>
+  )
 }

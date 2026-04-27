@@ -1,28 +1,18 @@
 export function Footer() {
   return (
-    <footer>
-      <span
-        className="text-[30px] m-1 mx-auto items-center block text-center"
-        style={{
-          background: 'linear-gradient(45deg, #e5e7eb, #9ca3af, #6b7280, #e5e7eb)',
-          backgroundSize: '300% 300%',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          animation: 'gradientShift 2s ease infinite'
-        }}
+    <footer className="border-t border-hn-line px-3 py-2 text-center text-[11px] text-hn-meta">
+      <a href="/" className="text-hn-foreground hover:text-hn-glow hover:underline">
+        home
+      </a>
+      <span className="mx-1.5 text-hn-line">·</span>
+      <a
+        href="https://x.com/davedemc"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-hn-foreground hover:text-hn-glow hover:underline"
       >
-        ⚡︎
-      </span>
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `
-      }} />
+        @davedemc
+      </a>
     </footer>
   )
 }

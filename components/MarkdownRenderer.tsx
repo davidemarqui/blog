@@ -14,43 +14,49 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     <div className={`
       prose 
       prose-invert 
-      prose-headings:text-zinc-200 
+      prose-headings:text-[#9fe8b8]
       prose-headings:font-bold
-      prose-headings:border-zinc-800 
-      prose-headings:pt-5 
+      prose-headings:border-hn-line
+      prose-headings:pt-5
       prose-headings:pb-1
-      prose-h1:text-4xl 
-      prose-h1:mb-6 
-      prose-h2:text-xl 
-      prose-h2:mt-10 
-      prose-h2:mb-4 
-      prose-h3:text-2xl 
-      prose-h3:mt-8 
-      prose-h3:mb-3  
-      prose-p:text-[#8f8f8f] 
-      prose-p:text-md 
-      prose-a:underline 
-      prose-a:transition 
-      prose-a:duration-300 
-      prose-a:hover:text-zinc-300 
-      prose-code:text-pink-300 
-      prose-pre:bg-gray-800 
-      prose-pre:p-4 
-      prose-pre:rounded-lg 
-      prose-code:bg-gray-700 
-      prose-code:rounded-md 
-      prose-code:px-1 
-      prose-code:py-0.5 
-      prose-hr:my-8 
-      prose-hr:border-t-2 
-      prose-blockquote:border-l-4 
-      prose-blockquote:border-gray-500 
-      prose-blockquote:pl-4 
-      prose-blockquote:italic 
-      prose-blockquote:text-gray-400 
-      max-w-none 
-      w-full 
-      space-y-4 
+      prose-h1:text-2xl
+      prose-h1:mb-4
+      prose-h2:text-lg
+      prose-h2:mt-8
+      prose-h2:mb-3
+      prose-h3:text-base
+      prose-h3:mt-6
+      prose-h3:mb-2
+      prose-p:text-[#b0d4bf]
+      prose-p:text-[13px]
+      prose-p:leading-relaxed
+      prose-a:text-[#39ff9a]
+      prose-a:no-underline
+      prose-a:underline-offset-2
+      prose-a:hover:underline
+      prose-code:text-[#ffb4d9]
+      prose-pre:bg-hn-panel
+      prose-pre:border
+      prose-pre:border-hn-line
+      prose-pre:p-4
+      prose-pre:rounded-sm
+      prose-code:bg-hn-panel
+      prose-code:border
+      prose-code:border-hn-line/50
+      prose-code:rounded-sm
+      prose-code:px-1
+      prose-code:py-0.5
+      prose-hr:my-8
+      prose-hr:border-hn-line
+      prose-blockquote:border-l-4
+      prose-blockquote:border-hn-glow/40
+      prose-blockquote:pl-4
+      prose-blockquote:italic
+      prose-blockquote:text-hn-meta
+      max-w-none
+      w-full
+      space-y-4
+      font-mono
       ${className}
     `}>
       <style>{`
@@ -73,9 +79,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: #18181b;
-          border: 1px solid #27272a;
-          color: #8f8f8f;
+          background-color: #0a110d;
+          border: 1px solid #1e3d2c;
+          color: #5d8f72;
           font-weight: bold;
           border-radius: 3px;
           font-size: 0.875rem;

@@ -11,6 +11,18 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+  			/* 90s terminal / phosphor CRT (shared token name `hn` for legacy classes) */
+  			hn: {
+  				orange: "#ffb020",
+  				bg: "#050807",
+  				panel: "#0a110d",
+  				line: "#1e3d2c",
+  				foreground: "#c6f7d8",
+  				meta: "#5d8f72",
+  				visited: "#8bc4a0",
+  				upvote: "#3d6b52",
+  				glow: "#39ff9a",
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

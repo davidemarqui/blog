@@ -16,14 +16,6 @@ async function getPosts(): Promise<Post[]> {
     return res.json();
 }
 
-function formatNumber(num: number): string {
-    return new Intl.NumberFormat().format(num);
-}
-
-function formatDate(date: string): string {
-    return new Date(date).getFullYear().toString();
-}
-
 export default async function Dashboard() {
     const session = await getServerSession(authOptions);
     if (!session) {
@@ -33,7 +25,7 @@ export default async function Dashboard() {
     const posts = await getPosts();
 
     return (
-        <div className="min-h-screen bg-black text-white p-6">
+        <div className="min-h-screen bg-hn-bg text-hn-foreground p-6 font-mono">
             <div className="max-w-6xl mx-auto">
                 <div className="flex justify-between items-center mb-6">
                     <h1 className="text-2xl font-bold font-mono">Dashboard</h1>
@@ -47,18 +39,16 @@ export default async function Dashboard() {
                 <div>
                     <h2 className="text-xl font-mono mb-4">Your Posts</h2>
                     {posts.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mx-auto w-full">
-                            {posts.map((post) => (
-                                <div key={post.id}>
-                                    <PostCard
-                                        post={post}
-                                        formattedDate={formatDate(post.created_at)}
-                                        formattedViews={`${formatNumber(post.views)} views`}
-                                    />
-                                    <PostActions slug={post.slug} />
-                                </div>
+                        <ol className="list-none m-0 p-0 space-y-1 border border-hn-line rounded bg-hn-panel max-w-2xl">
+                            {posts.map((post, i) => (
+                                <li key={post.id} className="list-none border-b border-hn-line last:border-b-0">
+                                    <PostCard post={post} rank={i + 1} className="px-2 py-1.5" />
+                                    <div className="px-2 pb-2">
+                                        <PostActions slug={post.slug} />
+                                    </div>
+                                </li>
                             ))}
-                        </div>
+                        </ol>
                     ) : (
                         <p className="text-zinc-400">No posts yet. Create your first post!</p>
                     )}
