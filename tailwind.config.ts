@@ -11,17 +11,17 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
-  			/* 90s terminal / phosphor CRT (shared token name `hn` for legacy classes) */
+  			/* Black terminal + soft phosphor accents (legacy `hn` token names) */
   			hn: {
-  				orange: "#ffb020",
-  				bg: "#050807",
-  				panel: "#0a110d",
-  				line: "#1e3d2c",
-  				foreground: "#c6f7d8",
-  				meta: "#5d8f72",
-  				visited: "#8bc4a0",
-  				upvote: "#3d6b52",
-  				glow: "#39ff9a",
+  				orange: "#c4b5a5",
+  				bg: "#000000",
+  				panel: "#060608",
+  				line: "#1a2220",
+  				foreground: "#e8eae6",
+  				meta: "#7a8a84",
+  				visited: "#9ca8a4",
+  				upvote: "#5a6862",
+  				glow: "#9dccb8",
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

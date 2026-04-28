@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { classifyCoverMedia } from "@/lib/cover-media"
 
-const frameClass = "w-full border-y border-hn-line bg-black"
+const frameClass = "w-full border-y border-hn-line bg-hn-bg"
 
 type Props = {
   url: string

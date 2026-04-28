@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export function IntroBanner() {
   return (
-    <section className="border-b border-hn-line bg-hn-bg/60 px-3 py-4 font-mono text-[12px] sm:text-[13px] leading-relaxed">
+    <section className="border-b border-hn-line bg-hn-bg/80 px-3 py-5 font-mono text-[13px] sm:text-[14px] leading-relaxed">
       <h1 className="m-0 mb-2 text-base sm:text-lg font-normal text-hn-glow hack-glow tracking-tight">
         Sup, I&apos;m David.
       </h1>

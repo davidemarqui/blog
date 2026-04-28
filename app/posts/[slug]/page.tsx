@@ -133,19 +133,22 @@ export default async function PostPage({ params }: { params: { slug: string } })
   const similar = await getSimilarPosts(params.slug)
 
   return (
-    <article className="border-b border-hn-line bg-hn-bg/40">
-      <div className="px-3 pt-3 pb-2 border-b border-hn-line/60">
-        <h1 className="text-lg sm:text-xl font-normal m-0 text-hn-glow hack-glow leading-tight tracking-tight">
+    <article className="border-b border-hn-line bg-hn-bg/50">
+      <div className="px-3 sm:px-4 pt-3 pb-3 border-b border-hn-line/70 bg-hn-panel/40">
+        <p className="m-0 mb-1.5 text-[10px] uppercase tracking-[0.12em] text-hn-meta font-mono">
+          read · markdown
+        </p>
+        <h1 className="text-xl sm:text-2xl font-normal m-0 text-hn-glow hack-glow leading-snug tracking-tight">
           {post.title}
         </h1>
-        <p className="m-0 mt-1.5 text-[11px] text-hn-meta font-mono">{formatViewsLine(post)}</p>
+        <p className="m-0 mt-2 text-[11px] text-hn-meta font-mono tabular-nums">{formatViewsLine(post)}</p>
       </div>
       {post.cover_image ? <CoverMedia url={post.cover_image} title={post.title} /> : null}
-      <div className="px-3 py-4">
+      <div className="px-3 sm:px-4 py-6 sm:py-8">
         <MarkdownRenderer content={post.content} />
       </div>
       <section className="px-0 pb-3 border-t border-hn-line">
-        <h2 className="m-0 px-3 py-1.5 text-[11px] text-hn-meta">more</h2>
+        <h2 className="m-0 px-3 py-1.5 text-[11px] text-hn-meta font-mono uppercase tracking-wide">more</h2>
         {similar.length > 0 ? (
           <ol className="list-none m-0 p-0 divide-y divide-hn-line/50">
             {similar.map((p, i) => (

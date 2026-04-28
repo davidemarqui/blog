@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: 150 25% 4%;
-  --foreground: 140 45% 88%;
-  --hn-cream: #050807;
-  --hn-text: #c6f7d8;
-  --hn-dim: #5d8f72;
+  --background: 0 0% 0%;
+  --foreground: 140 12% 93%;
+  --hn-cream: #000000;
+  --hn-text: #e8eae6;
+  --hn-dim: #7a8a84;
+  --terminal-phosphor: 158 42% 58%;
 }
 
 html {
@@ -17,16 +18,111 @@ html {
 body {
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     "DejaVu Sans Mono", monospace;
-  background-color: var(--hn-cream);
+  background-color: #000000;
   color: var(--hn-text);
 }
 
+/* Outer bloom + inset bezel around the terminal window */
 .hack-frame {
-  box-shadow: inset 0 0 0 1px rgba(57, 255, 154, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(120, 180, 160, 0.12),
+    0 0 20px rgba(60, 120, 100, 0.18),
+    0 0 42px rgba(40, 90, 75, 0.12),
+    0 0 80px rgba(20, 50, 45, 0.08),
+    inset 0 0 0 1px rgba(130, 190, 170, 0.14),
+    inset 0 0 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(160, 220, 200, 0.06);
 }
 
+/* Phosphor-style headline glow */
 .hack-glow {
-  text-shadow: 0 0 10px rgba(57, 255, 154, 0.28);
+  text-shadow:
+    0 0 6px rgba(157, 204, 184, 0.55),
+    0 0 16px rgba(100, 170, 145, 0.35),
+    0 0 32px rgba(60, 110, 95, 0.2),
+    0 0 48px rgba(40, 80, 70, 0.12);
+}
+
+/* CRT horizontal scanlines (subtle) */
+.terminal-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.11) 2px,
+    rgba(0, 0, 0, 0.11) 3px
+  );
+  mix-blend-mode: multiply;
+}
+
+/* Edge darkening like a curved glass tube */
+.terminal-vignette {
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.72);
+  border-radius: inherit;
+}
+
+/* Very faint green phosphor wash inside the shell */
+.terminal-phosphor-wash {
+  background: radial-gradient(
+    ellipse 120% 80% at 50% 0%,
+    rgba(80, 140, 115, 0.07) 0%,
+    transparent 55%
+  );
+}
+
+@keyframes terminal-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Soft bloom behind the terminal (does not dim content) */
+.terminal-pulse-glow {
+  background: radial-gradient(
+    ellipse 95% 75% at 50% 35%,
+    rgba(70, 140, 115, 0.28) 0%,
+    rgba(40, 90, 75, 0.12) 45%,
+    transparent 72%
+  );
+  animation: terminal-breathe 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-pulse-glow {
+    animation: none;
+    opacity: 0.65;
+  }
+
+  .terminal-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@keyframes terminal-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: -0.15em;
+  background: hsl(var(--terminal-phosphor));
+  box-shadow: 0 0 6px rgba(157, 204, 184, 0.65);
+  animation: terminal-cursor-blink 1.05s step-end infinite;
 }
 
 @layer utilities {
